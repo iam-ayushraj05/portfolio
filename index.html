@@ -1,81 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayush Raj | 3D Portfolio</title>
+    <title>Ayush Raj | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- 3D Canvas Background -->
+
+    <div class="vignette"></div>
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">AR.</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a href="#home" class="logo-container" style="text-decoration:none;">
+            <span class="logo-name">Ayush Raj</span>
+            <span class="logo-subtitle">Full Stack Developer</span>
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Tech Arsenal</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#" class="nav-resume-btn">Resume</a>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+        </div>
     </nav>
 
-    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section id="home" class="section hero">
+        <section id="home" class="section hero centered">
             <div class="hero-content">
-                <h1 class="glitch" data-text="Ayush Raj">Ayush Raj</h1>
-                <p class="subtitle">Creative Developer & 3D Enthusiast</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ayush-raj-0b9b19311" target="_blank" class="social-btn">LinkedIn</a>
-                    <a href="https://github.com/iam-ayushraj05" target="_blank" class="social-btn">GitHub</a>
+                <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ayush Raj</span> -<br><span
+                        class="gradient-text typewriter-text"></span></h1>
+                <p class="hero-subtitle">Full Stack Developer crafting modern, responsive web apps with clean UI and
+                    robust backend architecture.</p>
+                <div class="hero-location"
+                    style="display: flex; justify-content: center; align-items: center; gap: 8px; color: var(--color-light-slate); margin-bottom: 2rem; font-size: 1.05rem;">
+                    <i class="fas fa-map-marker-alt"></i> Bhubaneswar, India
                 </div>
-                <a href="#about" class="cta-btn">Explore My Universe</a>
+                <div class="hero-btns justify-center">
+                    <a href="#services" class="cta-btn primary-btn"><i class="fas fa-laptop-code"
+                            style="margin-right:8px;"></i>My Services</a>
+                    <a href="#" class="cta-btn secondary-btn"><i class="fas fa-download"
+                            style="margin-right:8px;"></i>Download CV</a>
+                    <a href="#contact" class="cta-btn text-btn">Contact Me <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </section>
 
         <!-- About Section -->
         <section id="about" class="section about">
-            <div class="container glass-panel">
-                <h2 class="section-title">Who I Am</h2>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>Hello! I'm Ayush, a Computer Science undergraduate at Siksha 'O' Anusandhan University (SOA ITER) with a passion for Cloud Computing, AI/ML, and modern Application Development.</p>
-                        <p>Beyond building immersive web experiences, I am a Google Cloud Arcade Facilitator and an active contributor to the tech community. From engineering AI-driven solutions like ElectionIQ and VenueFlow AI to tackling complex algorithms in Java and C++, I thrive on turning ideas into impactful realities.</p>
+            <div class="container">
+                <div class="about-layout">
+                    <!-- Left: Flipping Code Card -->
+                    <div class="about-image-col">
+                        <div class="code-card-container" onclick="this.classList.toggle('flipped')">
+                            <div class="code-card-inner">
+                                <!-- Front face -->
+                                <div class="code-card-front about-code glass-panel">
+                                    <div class="window-header">
+                                        <div class="circle red"></div>
+                                        <div class="circle yellow"></div>
+                                        <div class="circle green"></div>
+                                        <div class="window-title">developer.py</div>
+                                    </div>
+                                    <div class="code-content">
+                                        <pre><code><span class="keyword">class</span> <span class="function">Developer</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>):
+        <span class="variable">self</span>.<span class="property">name</span> = <span class="string">"Ayush Raj"</span>
+        <span class="variable">self</span>.<span class="property">role</span> = <span class="string">"Full-Stack Developer"</span>
+        <span class="variable">self</span>.<span class="property">langs</span> = [<span class="string">"Java"</span>, <span class="string">"JS"</span>]
+
+    <span class="keyword">def</span> <span class="function">build_amazing_things</span>(<span class="variable">self</span>):
+        <span class="keyword">return</span> <span class="string">"🚀 Innovation"</span></code></pre>
+                                        <div class="code-status">
+                                            <p class="status-title">STATUS: <span class="online">ONLINE</span></p>
+                                            <p class="status-desc"><span class="dot-green"></span> Available for work
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Back face -->
+                                <div class="code-card-back about-code glass-panel">
+                                    <div class="window-header">
+                                        <div class="circle red"></div>
+                                        <div class="circle yellow"></div>
+                                        <div class="circle green"></div>
+                                        <div class="window-title">portfolio.py</div>
+                                    </div>
+                                    <div class="code-content">
+                                        <pre><code><span class="keyword">class</span> <span class="function">Portfolio</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>):
+        <span class="variable">self</span>.<span class="property">date</span> = <span class="string">"2026"</span>
+        <span class="variable">self</span>.<span class="property">city</span> = <span class="string">"Bhubaneswar, IN"</span>
+        <span class="variable">self</span>.<span class="property">tools</span> = [<span class="string">"React"</span>, <span class="string">"GCP"</span>]
+
+    <span class="keyword">def</span> <span class="function">current_build</span>(<span class="variable">self</span>):
+        <span class="keyword">return</span> <span class="string">"🌐 This Site"</span></code></pre>
+                                        <div class="code-status">
+                                            <p class="status-title">STATUS: <span class="online">ONLINE</span></p>
+                                            <p class="status-desc"><span class="dot-green"></span> Available for work
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Text Content -->
+                    <div class="about-text-col">
+                        <h2 class="about-title">Hi, I'm <span class="gradient-text">Ayush Raj</span> — a developer
+                            passionate about building interactive, futuristic digital experiences.</h2>
+                        <p class="about-desc">I'm currently on my Computer Science journey at ITER (Class of '28), where
+                            I combine clean, efficient code with creative design thinking to craft web applications that
+                            are highly functional and visually immersive.</p>
+                        <p class="about-desc">My toolkit includes Java, C++, JavaScript, and React, allowing me to work
+                            confidently across frontend and backend, while also facilitating cloud technologies as a
+                            Google Cloud Arcade Facilitator.</p>
+
+                        <div class="about-pills">
+                            <div class="about-pill">
+                                <div class="pill-icon"><i class="fas fa-cloud"></i></div>
+                                <span>Google Cloud Facilitator</span>
+                            </div>
+                            <div class="about-pill">
+                                <div class="pill-icon"><i class="fas fa-code"></i></div>
+                                <span>Full-Stack Developer</span>
+                            </div>
+                            <div class="about-pill">
+                                <div class="pill-icon"><i class="fas fa-bolt"></i></div>
+                                <span>Futuristic UI Crafter</span>
+                            </div>
+                        </div>
+
+                        <a href="#projects" class="explore-link">Explore my work &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
+
         <!-- Skills Section -->
         <section id="skills" class="section skills">
             <div class="container">
-                <h2 class="section-title">My Arsenal</h2>
-                <div class="skills-grid">
-                    <div class="skill-card glass-panel">
-                        <h3>Cloud & DevOps</h3>
-                        <p>Google Cloud (GCP), Docker, Cloud Run</p>
-                        <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
+                <h2 class="section-title justify-center">Tech <span class="gradient-text">Arsenal</span></h2>
+                <div class="arsenal-grid">
+                    <div class="arsenal-card glass-panel">
+                        <div class="arsenal-header">
+                            <i class="fas fa-laptop-code gradient-text"></i>
+                            <h3>Frontend</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="pill">React 19</span>
+                            <span class="pill">Vite</span>
+                            <span class="pill">JavaScript</span>
+                            <span class="pill">Three.js</span>
+                            <span class="pill">HTML5 / CSS3</span>
+                        </div>
                     </div>
-                    <div class="skill-card glass-panel">
-                        <h3>Web Development</h3>
-                        <p>React 19, Vite, Node.js, Express</p>
-                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                    <div class="arsenal-card glass-panel">
+                        <div class="arsenal-header">
+                            <i class="fas fa-server gradient-text"></i>
+                            <h3>Backend & DB</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="pill">Node.js</span>
+                            <span class="pill">Express</span>
+                            <span class="pill">Java</span>
+                            <span class="pill">C++</span>
+                            <span class="pill">MongoDB</span>
+                        </div>
                     </div>
-                    <div class="skill-card glass-panel">
-                        <h3>AI & ML</h3>
-                        <p>Generative AI, Model Integration</p>
-                        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                    <div class="arsenal-card glass-panel">
+                        <div class="arsenal-header">
+                            <i class="fas fa-cloud gradient-text"></i>
+                            <h3>Cloud & AI</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="pill">Google Cloud (GCP)</span>
+                            <span class="pill">Docker</span>
+                            <span class="pill">Cloud Run</span>
+                            <span class="pill">Generative AI</span>
+                            <span class="pill">Model Integration</span>
+                        </div>
                     </div>
-                    <div class="skill-card glass-panel">
-                        <h3>Programming</h3>
-                        <p>Java, C++, DSA (9.7 CGPA)</p>
-                        <div class="progress-bar"><div class="progress" style="width: 92%;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section experience">
+            <div class="container">
+                <h2 class="section-title justify-center">Experience</h2>
+                <div class="timeline">
+                    <!-- Experience Block 1 -->
+                    <div class="timeline-item glass-panel">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 class="role">Google Cloud Arcade Facilitator</h3>
+                            <h4 class="company gradient-text">Google Cloud</h4>
+                            <div class="meta-data">
+                                <span><i class="fas fa-calendar-alt"></i> 2026 - Present</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                            </div>
+                            <ul class="exp-desc">
+                                <li>Facilitated cloud computing workshops and guided peers through Google Cloud
+                                    infrastructure.</li>
+                                <li>Achieved Google Cloud Arcade Legend Tier certification.</li>
+                                <li>Promoted DevOps and Cloud Run deployment strategies within the student developer
+                                    community.</li>
+                            </ul>
+                            <div class="skill-tags">
+                                <span class="tag">GCP</span>
+                                <span class="tag">Cloud Run</span>
+                                <span class="tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Experience Block 2 -->
+                    <div class="timeline-item glass-panel">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 class="role">Open Source Contributor</h3>
+                            <h4 class="company gradient-text">Hacktoberfest</h4>
+                            <div class="meta-data">
+                                <span><i class="fas fa-calendar-alt"></i> October 2025</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Global</span>
+                            </div>
+                            <ul class="exp-desc">
+                                <li>Actively contributed to multiple open-source repositories by resolving issues and
+                                    optimizing code.</li>
+                                <li>Collaborated with global developers to improve documentation and implement new
+                                    features.</li>
+                            </ul>
+                            <div class="skill-tags">
+                                <span class="tag">Open Source</span>
+                                <span class="tag">Git</span>
+                                <span class="tag">GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section achievements">
+            <div class="container">
+                <div class="section-header centered">
+                    <h2 class="section-title justify-center">Key <span class="gradient-text">Achievements</span></h2>
+                    <p class="section-subtitle">Milestones and recognitions from hackathons, research, and
+                        certifications.</p>
+                </div>
+
+                <div class="achievements-grid">
+                    <!-- Achievement 1 -->
+                    <div class="achievement-card glass-panel">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy gradient-text"></i>
+                        </div>
+                        <h3>Google Cloud Arcade Legend</h3>
+                        <p>Reached the highest certification tier while facilitating workshops and mastering GCP
+                            infrastructure.</p>
+                    </div>
+
+                    <!-- Achievement 2 -->
+                    <div class="achievement-card glass-panel">
+                        <div class="achievement-icon">
+                            <i class="fas fa-medal gradient-text"></i>
+                        </div>
+                        <h3>Smart India Hackathon Qualifier</h3>
+                        <p>Developed "Alumni Connect" in a 36-hour sprint during the SOA Ideathon.</p>
+                    </div>
+
+                    <!-- Achievement 3 -->
+                    <div class="achievement-card glass-panel">
+                        <div class="achievement-icon">
+                            <i class="fas fa-microscope gradient-text"></i>
+                        </div>
+                        <h3>Gen AI Research</h3>
+                        <p>Developed "The Odyssey Agent" and research-backed earthquake prediction models using machine
+                            learning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="container">
+                <div class="section-header centered">
+                    <h2 class="section-title justify-center">Featured <span class="gradient-text">Projects</span></h2>
+                    <p class="section-subtitle">A curated collection of full stack projects demonstrating my expertise
+                        in building modern, scalable web applications — from intuitive frontends to robust backend
+                        systems.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+                                alt="Next-Gen AI Workspace">
+                            <div class="working-badge">Currently Building</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Next-Gen AI Workspace</h3>
+                            <p>A unified collaborative environment currently in development, leveraging real-time AI
+                                agents for dynamic task management and code assistance.</p>
+                            <div class="tech-tags">
+                                <span>Next.js</span><span>OpenAI API</span><span>WebSockets</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="view-project-link"><i
+                                        class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/iam-ayushraj05" target="_blank" class="github-link"><i
+                                        class="fab fa-github"></i> Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+                                alt="ElectionIQ">
+                        </div>
+                        <div class="project-content">
+                            <h3>ElectionIQ – Interactive Platform</h3>
+                            <p>An AI-driven platform designed to demystify election processes. Features an interactive
+                                timeline, live data visualization, and a voice-controlled assistant.</p>
+                            <div class="tech-tags">
+                                <span>React</span><span>Generative AI</span><span>Node.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="view-project-link"><i
+                                        class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/iam-ayushraj05" target="_blank" class="github-link"><i
+                                        class="fab fa-github"></i> Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
+                                alt="VenueFlow AI">
+                        </div>
+                        <div class="project-content">
+                            <h3>VenueFlow AI</h3>
+                            <p>A smart venue management solution that integrates AI to streamline bookings, resource
+                                allocation, and customer interactions dynamically.</p>
+                            <div class="tech-tags">
+                                <span>GCP</span><span>Cloud Run</span><span>Docker</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank" class="view-project-link"><i
+                                        class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/iam-ayushraj05" target="_blank" class="github-link"><i
+                                        class="fab fa-github"></i> Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section services">
+            <div class="container">
+                <h2 class="section-title justify-center">What I Offer</h2>
+                <div class="services-grid">
+                    <div class="service-card glass-panel">
+                        <div class="icon-wrapper"><i class="fas fa-code service-icon"></i></div>
+                        <h3>Full-Stack Development</h3>
+                        <p>Building responsive, high-performance web applications using React, Node.js, and modern
+                            frameworks with seamless user experiences.</p>
+                    </div>
+                    <div class="service-card glass-panel">
+                        <div class="icon-wrapper"><i class="fas fa-cloud service-icon"></i></div>
+                        <h3>Cloud Architecture</h3>
+                        <p>Designing scalable backend infrastructure, containerization with Docker, and deploying robust
+                            services on Google Cloud Platform.</p>
+                    </div>
+                    <div class="service-card glass-panel">
+                        <div class="icon-wrapper"><i class="fas fa-robot service-icon"></i></div>
+                        <h3>AI Integration</h3>
+                        <p>Implementing generative AI models and intelligent automation to create smarter, data-driven
+                            applications.</p>
                     </div>
                 </div>
             </div>
@@ -83,23 +410,136 @@
 
         <!-- Contact Section -->
         <section id="contact" class="section contact">
-            <div class="container glass-panel">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="contact-desc">Ready to start your next project? Drop me a message.</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="cta-btn submit-btn">Send Message</button>
-                </form>
+            <div class="container">
+                <div class="section-header centered">
+                    <h2 class="section-title justify-center">Get In <span class="gradient-text">Touch</span></h2>
+                    <p class="section-subtitle">Have a project in mind or just want to say hello? Drop me a message and
+                        let's create something amazing together.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contact-form">
+                            <div class="input-wrapper">
+                                <label>Name</label>
+                                <input id="from_name" type="text" name="from_name" placeholder="Your name" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label>Email</label>
+                                <input id="reply_to" type="email" name="reply_to" placeholder="your.email@example.com"
+                                    required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label>Message</label>
+                                <textarea id="message" name="message" placeholder="Tell me about your project..."
+                                    rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn" id="submit-btn"><i class="fas fa-paper-plane"
+                                    style="margin-right:8px;"></i>Send Message</button>
+                        </form>
+                        <!-- Toast Notification -->
+                        <div id="form-toast"
+                            style="display:none; margin-top:1rem; padding:1rem 1.5rem; border-radius:10px; font-weight:600; font-size:0.95rem; text-align:center;">
+                        </div>
+                    </div>
+
+                    <div class="contact-info-container">
+                        <h3>Let's Connect</h3>
+                        <p class="connect-desc">I'm always excited to work on new projects and collaborate with amazing
+                            people. Whether you have a specific project in mind or just want to explore possibilities,
+                            I'd love to hear from you.</p>
+
+                        <div class="info-cards">
+                            <div class="info-card">
+                                <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                                <div class="info-text">
+                                    <span class="label">Email</span>
+                                    <span class="value">ayush.raj.dev01@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="icon-circle phone"><i class="fas fa-phone-alt"></i></div>
+                                <div class="info-text">
+                                    <span class="label">Phone</span>
+                                    <span class="value">+91 9279600626</span>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="icon-circle location"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="info-text">
+                                    <span class="label">Location</span>
+                                    <span class="value">Bhubaneswar, India</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="follow-me">
+                            <h4>Follow Me</h4>
+                            <div class="social-squares">
+                                <a href="https://github.com/iam-ayushraj05" target="_blank"><i
+                                        class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/ayush-raj-0b9b19311" target="_blank"
+                                    class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://instagram.com" target="_blank" class="instagram"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="https://twitter.com" target="_blank" class="twitter"><i
+                                        class="fa-brands fa-x-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Scripts -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-columns">
+                <div class="footer-col brand-col">
+                    <p class="footer-desc">Building modern, high-performance web experiences through elegant design,
+                        clean code, and the latest technologies.</p>
+                    <div class="social-squares small">
+                        <a href="https://github.com/iam-ayushraj05" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ayush-raj-0b9b19311" target="_blank" class="linkedin"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="twitter"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col links-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col info-col">
+                    <h4>Get In Touch</h4>
+                    <p><span class="label">Email:</span><br>ayush.raj.dev01@gmail.com</p>
+                    <p><span class="label">Location:</span><br>Bhubaneswar, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ayush Raj. All rights reserved.</p>
+                <a href="#home" class="back-to-top">Back to Top &uarr;</a>
+            </div>
+        </div>
+        <!-- Floating Chat Icon -->
+        <div class="floating-chat">
+            <i class="far fa-comment-dots"></i>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
