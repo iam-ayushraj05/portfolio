@@ -36,8 +36,32 @@
             </ul>
             <a href="#" class="nav-resume-btn">Resume</a>
             <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+            <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true">
+        <div class="mobile-menu-header">
+            <span class="logo-name">Ayush Raj</span>
+            <button id="mobile-close" class="mobile-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="mobile-nav-links">
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Tech Arsenal</a>
+            <a href="#experience" class="mobile-link">Experience</a>
+            <a href="#achievements" class="mobile-link">Achievements</a>
+            <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#services" class="mobile-link">Services</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <a href="#" class="cta-btn primary-btn" style="width:100%; justify-content:center;">Download Resume</a>
+        </div>
+    </div>
+    <div id="menu-overlay" class="menu-overlay"></div>
 
     <main>
         <!-- Hero Section -->

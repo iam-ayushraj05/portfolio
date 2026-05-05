@@ -56,6 +56,39 @@ if (contactForm) {
     });
 }
 
+// --- Hamburger / Mobile Menu ---
+const hamburgerBtn = document.getElementById('hamburger');
+const mobileMenu   = document.getElementById('mobile-menu');
+const menuOverlay  = document.getElementById('menu-overlay');
+const mobileClose  = document.getElementById('mobile-close');
+const mobileLinks  = document.querySelectorAll('.mobile-link');
+
+function openMobileMenu() {
+    mobileMenu.classList.add('open');
+    menuOverlay.classList.add('active');
+    hamburgerBtn.classList.add('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    menuOverlay.classList.remove('active');
+    hamburgerBtn.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+}
+
+if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileMenu);
+if (mobileClose)  mobileClose.addEventListener('click', closeMobileMenu);
+if (menuOverlay)  menuOverlay.addEventListener('click', closeMobileMenu);
+mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMobileMenu();
+});
+
 // --- Theme Toggle (Light/Dark Mode) ---
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
