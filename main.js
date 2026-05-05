@@ -310,3 +310,159 @@ function typeWriter() {
 }
 
 document.addEventListener('DOMContentLoaded', typeWriter);
+
+// =====================================================
+//   FLOATING CHAT WIDGET
+// =====================================================
+(function () {
+    const widget     = document.getElementById('chat-widget');
+    const toggleBtn  = document.getElementById('chat-toggle-btn');
+    const closeBtn   = document.getElementById('chat-close-btn');
+    const messagesEl = document.getElementById('chat-messages');
+    const inputEl    = document.getElementById('chat-input');
+    const sendBtn    = document.getElementById('chat-send-btn');
+    const badge      = document.getElementById('chat-badge');
+    const quickReplies = document.querySelectorAll('.quick-reply');
+    const quickBar   = document.getElementById('chat-quick-replies');
+
+    if (!widget) return;
+
+    // --- Bot knowledge base ---
+    const botReplies = {
+        skills: "Ayush is skilled in React, Node.js, Java, C++, MongoDB, Docker, and Google Cloud Platform. He also works with Three.js and Generative AI! 🚀",
+        projects: "Ayush has built projects like:\n• Next-Gen AI Workspace\n• ElectionIQ – Interactive Platform\n• VenueFlow AI\n\nCheck the Projects section for full details! 💡",
+        contact: "You can reach Ayush at:\n📧 ayush.raj.dev01@gmail.com\n📞 +91 9279600626\n📍 Bhubaneswar, India\n\nOr use the Contact form on this page!",
+        default: [
+            "That's a great question! Feel free to explore the portfolio or use the Contact form to reach out to Ayush directly. 😊",
+            "Interesting! You can learn more about Ayush by scrolling through the sections above, or drop a message in the Contact section.",
+            "I'm a simple bot, but Ayush would love to chat! Hit the Contact section to get in touch. 🙌",
+        ],
+    };
+
+    let defaultIdx = 0;
+    let isOpen = false;
+
+    // --- Helpers ---
+    function addMessage(text, sender) {
+        const msg = document.createElement('div');
+        msg.className = `chat-msg ${sender}`;
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.textContent = text;
+        msg.appendChild(bubble);
+        messagesEl.appendChild(msg);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function showTyping() {
+        const typing = document.createElement('div');
+        typing.className = 'chat-msg bot chat-typing';
+        typing.id = 'typing-indicator';
+        typing.innerHTML = `<div class="chat-bubble">
+            <span class="chat-dot"></span>
+            <span class="chat-dot"></span>
+            <span class="chat-dot"></span>
+        </div>`;
+        messagesEl.appendChild(typing);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function removeTyping() {
+        const el = document.getElementById('typing-indicator');
+        if (el) el.remove();
+    }
+
+    function getBotReply(msg) {
+        const lower = msg.toLowerCase();
+        if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack') || lower.includes('language'))
+            return botReplies.skills;
+        if (lower.includes('project') || lower.includes('work') || lower.includes('built') || lower.includes('portfolio'))
+            return botReplies.projects;
+        if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('hire'))
+            return botReplies.contact;
+        const reply = botReplies.default[defaultIdx % botReplies.default.length];
+        defaultIdx++;
+        return reply;
+    }
+
+    function sendMessage(text) {
+        if (!text.trim()) return;
+        addMessage(text, 'user');
+        inputEl.value = '';
+
+        // Hide quick replies after first user message
+        if (quickBar && !quickBar.classList.contains('hidden')) {
+            quickBar.classList.add('hidden');
+        }
+
+        showTyping();
+        setTimeout(() => {
+            removeTyping();
+            addMessage(getBotReply(text), 'bot');
+        }, 950 + Math.random() * 400);
+    }
+
+    // --- Toggle open/close ---
+    function openChat() {
+        isOpen = true;
+        widget.classList.add('open');
+        badge.classList.add('hidden');
+        inputEl.focus();
+    }
+
+    function closeChat() {
+        isOpen = false;
+        widget.classList.remove('open');
+    }
+
+    toggleBtn.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    closeBtn.addEventListener('click', closeChat);
+
+    // Close on Escape
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && isOpen) closeChat();
+    });
+
+    // Send on button click or Enter
+    sendBtn.addEventListener('click', () => sendMessage(inputEl.value));
+    inputEl.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage(inputEl.value);
+        }
+    });
+
+    // Quick reply chips
+    quickReplies.forEach(btn => {
+        btn.addEventListener('click', () => sendMessage(btn.dataset.msg));
+    });
+
+    // Auto-open after 4s with a subtle hint
+    setTimeout(() => {
+        if (!isOpen) {
+            badge.classList.remove('hidden');
+        }
+    }, 4000);
+})();
+
+
+// ===== Visitor Counter (simple) =====
+(function () {
+    const numEl = document.getElementById('visitor-num');
+    if (!numEl) return;
+
+    const COUNTER_URL = 'https://api.counterapi.dev/v1/ayushraj-portfolio/visitors/up';
+
+    fetch(COUNTER_URL)
+        .then(r => r.json())
+        .then(data => {
+            const count = data.count ?? data.value ?? 1;
+            numEl.textContent = count.toLocaleString();
+        })
+        .catch(() => {
+            const stored = parseInt(localStorage.getItem('portfolio_visits') || '0', 10) + 1;
+            localStorage.setItem('portfolio_visits', stored);
+            numEl.textContent = stored.toLocaleString();
+        });
+})();
+
