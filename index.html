@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush Raj | 3D Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 3D Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">AR.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="section hero">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Ayush Raj">Ayush Raj</h1>
+                <p class="subtitle">Creative Developer & 3D Enthusiast</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ayush-raj-0b9b19311" target="_blank" class="social-btn">LinkedIn</a>
+                    <a href="https://github.com/iam-ayushraj05" target="_blank" class="social-btn">GitHub</a>
+                </div>
+                <a href="#about" class="cta-btn">Explore My Universe</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container glass-panel">
+                <h2 class="section-title">Who I Am</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Hello! I'm Ayush, a Computer Science undergraduate at Siksha 'O' Anusandhan University (SOA ITER) with a passion for Cloud Computing, AI/ML, and modern Application Development.</p>
+                        <p>Beyond building immersive web experiences, I am a Google Cloud Arcade Facilitator and an active contributor to the tech community. From engineering AI-driven solutions like ElectionIQ and VenueFlow AI to tackling complex algorithms in Java and C++, I thrive on turning ideas into impactful realities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills">
+            <div class="container">
+                <h2 class="section-title">My Arsenal</h2>
+                <div class="skills-grid">
+                    <div class="skill-card glass-panel">
+                        <h3>Cloud & DevOps</h3>
+                        <p>Google Cloud (GCP), Docker, Cloud Run</p>
+                        <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="skill-card glass-panel">
+                        <h3>Web Development</h3>
+                        <p>React 19, Vite, Node.js, Express</p>
+                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-card glass-panel">
+                        <h3>AI & ML</h3>
+                        <p>Generative AI, Model Integration</p>
+                        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-card glass-panel">
+                        <h3>Programming</h3>
+                        <p>Java, C++, DSA (9.7 CGPA)</p>
+                        <div class="progress-bar"><div class="progress" style="width: 92%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container glass-panel">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="contact-desc">Ready to start your next project? Drop me a message.</p>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="cta-btn submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
