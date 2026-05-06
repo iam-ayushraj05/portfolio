@@ -466,3 +466,12 @@ document.addEventListener('DOMContentLoaded', typeWriter);
         });
 })();
 
+// ===== Back to Top Fix =====
+const backToTopBtn = document.querySelector('.back-to-top');
+const topSection = document.getElementById('home');
+if (backToTopBtn && topSection) {
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        topSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
