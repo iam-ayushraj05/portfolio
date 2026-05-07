@@ -72,7 +72,8 @@ h4 {
     height: 100vh;
     background: radial-gradient(circle, transparent 40%, var(--color-bg) 100%);
     z-index: -1;
-    pointer-events: none;
+    pointer-events: none !important;
+    touch-action: none;
 }
 
 #bg-canvas {
@@ -82,7 +83,9 @@ h4 {
     width: 100vw;
     height: 100vh;
     z-index: -2;
-    pointer-events: none;
+    pointer-events: none !important;
+    touch-action: none;
+    user-select: none;
 }
 
 /* Navbar */
@@ -252,7 +255,8 @@ span.gradient-text {
     flex-wrap: wrap;
     margin-top: 2rem;
     position: relative;
-    z-index: 10;
+    z-index: 20;
+    isolation: isolate;
 }
 
 .cta-btn {
@@ -268,8 +272,10 @@ span.gradient-text {
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
-    z-index: 10;
-    touch-action: manipulation;
+    z-index: 20;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    cursor: pointer;
 }
 
 .primary-btn {
@@ -1100,6 +1106,11 @@ body.light-mode .pill {
     padding: 0.6rem 1.2rem;
     border-radius: 8px;
     background: rgba(59, 130, 246, 0.1);
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(59,130,246,0.2);
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
 }
 
 .view-project-link:hover {
@@ -1119,6 +1130,11 @@ body.light-mode .pill {
     padding: 0.6rem 1.2rem;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.08);
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.1);
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
 }
 
 .github-link:hover {
@@ -2235,8 +2251,8 @@ body.light-mode .chat-input::placeholder {
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
+        touch-action: pan-x;
         gap: 1rem;
-        /* extra bottom space so dots sit clear below project-links */
         padding-bottom: 3rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
@@ -2487,6 +2503,7 @@ body.light-mode .chat-input::placeholder {
     color: var(--color-light-slate);
     font-weight: 500;
     animation: fadeInUp 1s ease 1.2s both;
+    pointer-events: none;
 }
 
 .scroll-text {
@@ -2549,7 +2566,7 @@ body.light-mode .scroll-mouse {
 
 @media (max-width: 480px) {
     .scroll-indicator {
-        margin-top: 2.5rem;
+        display: none;
     }
 }
 
