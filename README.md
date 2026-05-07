@@ -4,7 +4,7 @@ A modern, highly interactive personal portfolio showcasing full-stack developmen
 
 The website features a fully interactive **AI Chat Widget**, smooth GSAP scroll animations, a 3D particle network background, and a responsive glassmorphism layout to highlight projects, achievements, and technical expertise.
 
-Live Preview -> [Add Your Live Link Here]
+Live Preview -> https://portfolio-sigma-beryl-zfspl9kych.vercel.app/
 ---
 
 ## ✨ Features
