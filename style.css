@@ -798,11 +798,16 @@ body.light-mode .chat-input::placeholder { color: rgba(0,0,0,0.3); }
     .projects-grid { 
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
         scroll-snap-type: x mandatory;
         gap: 1rem;
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        margin-left: -5vw;
+        margin-right: -5vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
     }
     .projects-grid::-webkit-scrollbar {
         display: none;
@@ -810,11 +815,8 @@ body.light-mode .chat-input::placeholder { color: rgba(0,0,0,0.3); }
     .project-card { 
         flex: 0 0 85%; 
         scroll-snap-align: center; 
-        background: #0b0f14;
+        background: var(--color-panel);
         border-radius: 16px;
-    }
-    body.light-mode .project-card {
-        background: #ffffff;
     }
     .project-content {
         align-items: center;
@@ -945,3 +947,14 @@ body.light-mode .scroll-mouse {
 @media (max-width: 480px) {
     .scroll-indicator { margin-top: 2.5rem; }
 }
+
+.info-text a.value { text-decoration: none; color: inherit; transition: color 0.3s; }
+.info-text a.value:hover { color: var(--color-primary); }
+
+.author-name { color: #d8b4fe; font-weight: 600; }
+.footer-credits { display: flex; flex-direction: column; gap: 0.3rem; }
+.slider-dots { display: none; justify-content: center; gap: 8px; margin-top: 1.5rem; }
+.slider-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); cursor: pointer; transition: all 0.3s ease; }
+body.light-mode .slider-dots .dot { background: rgba(0, 0, 0, 0.2); }
+.slider-dots .dot.active { background: var(--color-primary); width: 24px; border-radius: 12px; }
+@media (max-width: 768px) { .slider-dots { display: flex; } }

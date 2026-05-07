@@ -475,3 +475,54 @@ if (backToTopBtn && topSection) {
         topSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 }
+
+
+// ===== Drag to Scroll for Projects Grid =====
+const slider = document.querySelector('.projects-grid');
+let isDown = false;
+let startX;
+let scrollLeft;
+if(slider) {
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        slider.style.cursor = 'grabbing';
+    });
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // scroll-fast
+        slider.scrollLeft = scrollLeft - walk;
+    });
+}
+
+// ===== Project Slider Dots =====
+const projectDots = document.querySelectorAll('#projects-dots .dot');
+if (slider && projectDots.length > 0) {
+    slider.addEventListener('scroll', () => {
+        const scrollLeft = slider.scrollLeft;
+        const cardWidth = slider.querySelector('.project-card').offsetWidth;
+        let activeIndex = Math.round(scrollLeft / cardWidth);
+        if (activeIndex >= projectDots.length) activeIndex = projectDots.length - 1;
+        projectDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === activeIndex);
+        });
+    });
+    projectDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            const cardWidth = slider.querySelector('.project-card').offsetWidth;
+            slider.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+        });
+    });
+}
