@@ -110,9 +110,22 @@ h4 {
 
 .logo-container {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-primary);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
 }
 
 .logo-name {
@@ -120,6 +133,7 @@ h4 {
     font-weight: 700;
     color: var(--color-heading);
     font-family: 'Inter', sans-serif;
+    line-height: 1.1;
 }
 
 .logo-subtitle {
