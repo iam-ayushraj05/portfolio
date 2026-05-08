@@ -12,7 +12,7 @@ setTimeout(() => window.scrollTo(0, 0), 10);
 // ⚠️ REPLACE the values below with your own from https://www.emailjs.com/
 const EMAILJS_PUBLIC_KEY = 'GDlHz3Pnp19XFW29h';   // EmailJS → Account → Public Key
 const EMAILJS_SERVICE_ID = 'service_9hitxt5';   // EmailJS → Email Services → Service ID
-const EMAILJS_TEMPLATE_ID = 'template_7o1t8qj';  // EmailJS → Email Templates → Template ID
+const EMAILJS_TEMPLATE_ID = 'template_itkcnmo';  // EmailJS → Email Templates → Template ID
 
 emailjs.init(EMAILJS_PUBLIC_KEY);
 
@@ -58,10 +58,10 @@ if (contactForm) {
 
 // --- Hamburger / Mobile Menu ---
 const hamburgerBtn = document.getElementById('hamburger');
-const mobileMenu   = document.getElementById('mobile-menu');
-const menuOverlay  = document.getElementById('menu-overlay');
-const mobileClose  = document.getElementById('mobile-close');
-const mobileLinks  = document.querySelectorAll('.mobile-link');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuOverlay = document.getElementById('menu-overlay');
+const mobileClose = document.getElementById('mobile-close');
+const mobileLinks = document.querySelectorAll('.mobile-link');
 
 function openMobileMenu() {
     mobileMenu.classList.add('open');
@@ -80,8 +80,8 @@ function closeMobileMenu() {
 }
 
 if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileMenu);
-if (mobileClose)  mobileClose.addEventListener('click', closeMobileMenu);
-if (menuOverlay)  menuOverlay.addEventListener('click', closeMobileMenu);
+if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
+if (menuOverlay) menuOverlay.addEventListener('click', closeMobileMenu);
 mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
 // Close on Escape key
@@ -315,15 +315,15 @@ document.addEventListener('DOMContentLoaded', typeWriter);
 //   FLOATING CHAT WIDGET
 // =====================================================
 (function () {
-    const widget     = document.getElementById('chat-widget');
-    const toggleBtn  = document.getElementById('chat-toggle-btn');
-    const closeBtn   = document.getElementById('chat-close-btn');
+    const widget = document.getElementById('chat-widget');
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    const closeBtn = document.getElementById('chat-close-btn');
     const messagesEl = document.getElementById('chat-messages');
-    const inputEl    = document.getElementById('chat-input');
-    const sendBtn    = document.getElementById('chat-send-btn');
-    const badge      = document.getElementById('chat-badge');
+    const inputEl = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send-btn');
+    const badge = document.getElementById('chat-badge');
     const quickReplies = document.querySelectorAll('.quick-reply');
-    const quickBar   = document.getElementById('chat-quick-replies');
+    const quickBar = document.getElementById('chat-quick-replies');
 
     if (!widget) return;
 
@@ -482,7 +482,7 @@ const slider = document.querySelector('.projects-grid');
 let isDown = false;
 let startX;
 let scrollLeft;
-if(slider) {
+if (slider) {
     slider.addEventListener('mousedown', (e) => {
         isDown = true;
         slider.classList.add('active');
@@ -505,7 +505,7 @@ if(slider) {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5; 
+        const walk = (x - startX) * 1.5;
         slider.scrollLeft = scrollLeft - walk;
     });
 }
