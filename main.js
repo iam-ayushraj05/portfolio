@@ -486,6 +486,7 @@ if(slider) {
     slider.addEventListener('mousedown', (e) => {
         isDown = true;
         slider.classList.add('active');
+        slider.style.scrollSnapType = 'none'; // Disable snap during drag
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
         slider.style.cursor = 'grabbing';
@@ -493,16 +494,18 @@ if(slider) {
     slider.addEventListener('mouseleave', () => {
         isDown = false;
         slider.style.cursor = 'grab';
+        slider.style.scrollSnapType = ''; // Re-enable snap
     });
     slider.addEventListener('mouseup', () => {
         isDown = false;
         slider.style.cursor = 'grab';
+        slider.style.scrollSnapType = ''; // Re-enable snap
     });
     slider.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2; // scroll-fast
+        const walk = (x - startX) * 1.5; 
         slider.scrollLeft = scrollLeft - walk;
     });
 }

@@ -1005,12 +1005,24 @@ body.light-mode .pill {
 
 /* Featured Projects */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
     gap: 1.5rem;
+    padding-bottom: 3rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.projects-grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
 .project-card {
+    flex: 0 0 calc(33.333% - 1rem); /* Show 3 cards on desktop */
+    min-width: 320px;
+    scroll-snap-align: center;
     background: var(--color-panel);
     border-radius: 16px;
     overflow: hidden;
@@ -1450,7 +1462,6 @@ body.light-mode .contact-form textarea {
    FLOATING CHAT WIDGET
 ===================================================== */
 
-/* --- Container (fixed anchor) --- */
 .chat-widget {
     position: fixed;
     bottom: 28px;
@@ -1460,9 +1471,9 @@ body.light-mode .contact-form textarea {
     flex-direction: column;
     align-items: flex-end;
     gap: 12px;
+    pointer-events: none;
 }
 
-/* --- Toggle Button --- */
 .chat-toggle-btn {
     position: relative;
     width: 60px;
@@ -1480,6 +1491,7 @@ body.light-mode .contact-form textarea {
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
     outline: none;
     flex-shrink: 0;
+    pointer-events: auto;
 }
 
 .chat-toggle-btn:hover {
@@ -2261,32 +2273,16 @@ body.light-mode .chat-input::placeholder {
 
     /* Projects */
     .projects-grid {
-        display: flex;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        touch-action: pan-x;
-        gap: 1rem;
-        padding-bottom: 3rem;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
         margin-left: -5vw;
         margin-right: -5vw;
         padding-left: 5vw;
         padding-right: 5vw;
     }
 
-    .projects-grid::-webkit-scrollbar {
-        display: none;
-    }
-
     .project-card {
         /* calc: 90vw minus the side padding so card fully fits viewport */
         flex: 0 0 calc(90vw - 2rem);
-        width: calc(90vw - 2rem);
-        scroll-snap-align: center;
-        background: var(--color-panel);
-        border-radius: 16px;
+        min-width: calc(90vw - 2rem);
     }
 
     .project-content {
@@ -2608,7 +2604,7 @@ body.light-mode .scroll-mouse {
 }
 
 .slider-dots {
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
@@ -2639,9 +2635,4 @@ body.light-mode .slider-dots .dot {
     width: 24px;
     border-radius: 12px;
 }
-
-@media (max-width: 768px) {
-    .slider-dots {
-        display: flex;
-    }
-}
+
