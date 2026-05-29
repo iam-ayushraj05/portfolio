@@ -2645,4 +2645,140 @@ body.light-mode .slider-dots .dot {
     width: 24px;
     border-radius: 12px;
 }
-
+
+
+
+/* === Hero Container & Two-Column Layout === */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-glow-circle {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(6, 182, 212, 0.15) 50%, rgba(99, 102, 241, 0.05) 70%, transparent 90%);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(20px);
+    animation: pulseGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(0.9) translate(0, 0);
+        opacity: 0.85;
+    }
+    100% {
+        transform: scale(1.1) translate(5px, -5px);
+        opacity: 1.15;
+    }
+}
+
+.hero-photo-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+    z-index: 2;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 25px rgba(59, 130, 246, 0.35));
+    animation: floatHeroImage 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+@keyframes floatHeroImage {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(1deg);
+    }
+}
+
+.hero-content {
+    flex: 1.2;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Align Location & Buttons Left on Desktop */
+.hero-content .hero-location {
+    justify-content: flex-start !important;
+}
+
+.hero-content .hero-btns {
+    justify-content: flex-start !important;
+}
+
+/* Responsiveness for Hero Section */
+@media (max-width: 991px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+        padding-top: 2rem;
+    }
+    
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .hero-content .hero-location {
+        justify-content: center !important;
+    }
+    
+    .hero-content .hero-btns {
+        justify-content: center !important;
+    }
+    
+    .hero-photo-img {
+        max-width: 320px;
+    }
+    
+    .hero-glow-circle {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-photo-img {
+        max-width: 250px;
+    }
+    
+    .hero-glow-circle {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+/* Adjust title size on desktop and prevent typewriter text from wrapping */
+.hero-container .hero-title {
+    font-size: clamp(32px, 3.8vw, 50px);
+}
+
+.typewriter-text {
+    white-space: nowrap;
+    font-size: 0.82em;
+}
