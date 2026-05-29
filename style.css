@@ -2164,16 +2164,65 @@ body.light-mode .chat-input::placeholder {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 1.5rem;
+        padding-top: 1rem;
+        width: 100%;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        position: relative;
+        z-index: 10; /* keep text and buttons on top of image column */
+    }
+
+    .hero-image-col {
+        order: -1; /* move profile image above text on mobile */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-photo-img {
+        max-width: 220px;
+        height: auto;
+        z-index: 2;
+    }
+
+    .hero-glow-circle {
+        width: 240px;
+        height: 240px;
+        z-index: 1;
     }
 
     .hero-title {
         text-align: center;
         font-size: clamp(32px, 9vw, 52px);
+        margin-bottom: 1rem;
     }
 
     .hero-subtitle {
         text-align: center;
         font-size: clamp(15px, 4vw, 18px);
+        margin-bottom: 1.2rem !important; /* proper spacing to location pin */
+    }
+
+    .hero-location {
+        font-size: 0.95rem !important;
+        margin-bottom: 1.5rem !important; /* proper spacing to buttons */
     }
 
     .hero-btns {
@@ -2183,6 +2232,9 @@ body.light-mode .chat-input::placeholder {
         align-items: center;
         gap: 0.6rem;
         width: 100%;
+        position: relative;
+        z-index: 25; /* highest z-index so buttons are clickable */
+        pointer-events: auto !important;
     }
 
     .cta-btn {
@@ -2194,6 +2246,9 @@ body.light-mode .chat-input::placeholder {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+        z-index: 30;
+        pointer-events: auto !important;
     }
 
     .cta-btn i {
@@ -2205,8 +2260,25 @@ body.light-mode .chat-input::placeholder {
         padding: 0 1rem;
     }
 
-    .hero-location {
-        font-size: 0.95rem !important;
+    .projects {
+        overflow-x: hidden; /* prevent horizontal scroll on project grid outer container */
+    }
+
+    .projects-grid {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .timeline-content .role {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-content .company {
+        font-size: 1rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.15rem;
     }
 
     /* About */
@@ -2423,8 +2495,38 @@ body.light-mode .chat-input::placeholder {
 
 /* --- Small phones (≤ 480px) --- */
 @media (max-width: 480px) {
+    .navbar {
+        padding: 0.8rem 4% !important;
+    }
+
+    .nav-right {
+        gap: 0.8rem !important;
+    }
+
+    .logo-container {
+        gap: 6px !important;
+    }
+
+    .logo-img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .logo-name {
+        font-size: 1.1rem !important;
+    }
+
     .section {
         padding: 80px 4% 50px;
+    }
+
+    .hero-photo-img {
+        max-width: 180px !important;
+    }
+
+    .hero-glow-circle {
+        width: 200px !important;
+        height: 200px !important;
     }
 
     .hero-title {
@@ -2496,12 +2598,21 @@ body.light-mode .chat-input::placeholder {
         padding: 75px 4% 40px;
     }
 
+    .hero-photo-img {
+        max-width: 150px !important;
+    }
+
+    .hero-glow-circle {
+        width: 160px !important;
+        height: 160px !important;
+    }
+
     .hero-title {
         font-size: clamp(26px, 10vw, 36px);
     }
 
     .logo-name {
-        font-size: 1.2rem;
+        font-size: 1.05rem !important;
     }
 
     .code-card-container {
@@ -2730,7 +2841,17 @@ body.light-mode .slider-dots .dot {
     justify-content: flex-start !important;
 }
 
-/* Responsiveness for Hero Section */
+/* Adjust title size on desktop and prevent typewriter text from wrapping */
+.hero-container .hero-title {
+    font-size: clamp(32px, 3.8vw, 50px);
+}
+
+.typewriter-text {
+    white-space: nowrap;
+    font-size: 0.82em;
+}
+
+/* Responsiveness for Hero Section & Mobile Views in descending order */
 @media (max-width: 991px) {
     .hero-container {
         flex-direction: column;
@@ -2762,23 +2883,266 @@ body.light-mode .slider-dots .dot {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    /* Hero section centering & layout */
+    .hero {
+        min-height: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 110px !important; /* proper padding to avoid overlapping with the navbar */
+        padding-bottom: 60px !important;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 1.5rem !important; /* tighter gap on mobile */
+        padding-top: 0 !important; /* remove padding-top since .hero handles it */
+        width: 100%;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        position: relative;
+        z-index: 10; /* keep text and buttons on top of image column */
+    }
+
+    /* Move profile image slightly upward & scale better */
+    .hero-image-col {
+        order: -1 !important; /* move profile image above text on mobile */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0.5rem !important;
+    }
+
     .hero-photo-img {
-        max-width: 250px;
+        max-width: 220px !important; /* scaled better for mobile */
+        height: auto;
+        z-index: 2;
+    }
+
+    .hero-glow-circle {
+        width: 240px !important;
+        height: 240px !important;
+        z-index: 1;
+    }
+
+    /* Spacing between text elements */
+    .hero-container .hero-title {
+        font-size: clamp(32px, 8vw, 48px) !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .hero-subtitle {
+        text-align: center;
+        font-size: clamp(15px, 4vw, 18px);
+        margin-bottom: 1.2rem !important; /* proper spacing to location pin */
+    }
+
+    .hero-location {
+        font-size: 0.95rem !important;
+        margin-bottom: 1.5rem !important; /* proper spacing to buttons */
+    }
+
+    /* Hero buttons clickability fixes */
+    .hero-btns {
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.6rem;
+        width: 100%;
+        position: relative;
+        z-index: 25 !important; /* highest z-index so buttons are clickable */
+        pointer-events: auto !important;
+    }
+
+    .cta-btn {
+        flex: 1 1 auto;
+        min-width: 120px;
+        height: 48px;
+        padding: 0 1rem;
+        font-size: 0.78rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 30 !important;
+        pointer-events: auto !important;
+    }
+
+    .cta-btn i {
+        margin-right: 5px !important;
+    }
+
+    .text-btn {
+        height: 48px;
+        padding: 0 1rem;
+    }
+
+    /* Fix any horizontal overflow in sections */
+    .projects {
+        overflow-x: hidden !important; /* prevent horizontal scroll on project grid outer container */
+    }
+
+    .projects-grid {
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Text resizing for timeline and services on mobile */
+    .timeline-content .role {
+        font-size: 1.2rem;
     }
     
-    .hero-glow-circle {
-        width: 220px;
-        height: 220px;
+    .timeline-content .company {
+        font-size: 1rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.15rem;
     }
 }
 
-/* Adjust title size on desktop and prevent typewriter text from wrapping */
-.hero-container .hero-title {
-    font-size: clamp(32px, 3.8vw, 50px);
+@media (max-width: 480px) {
+    /* Compact navbar on small phones */
+    .navbar {
+        padding: 0.8rem 4% !important;
+    }
+
+    .nav-right {
+        gap: 0.8rem !important;
+    }
+
+    .logo-container {
+        gap: 6px !important;
+    }
+
+    .logo-img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .logo-name {
+        font-size: 1.1rem !important;
+    }
+
+    .section {
+        padding: 80px 4% 50px !important;
+    }
+
+    /* Scale profile photo for smaller mobile screen */
+    .hero-photo-img {
+        max-width: 180px !important;
+    }
+
+    .hero-glow-circle {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .hero-container .hero-title {
+        font-size: clamp(28px, 10vw, 42px) !important;
+    }
+
+    .logo-subtitle {
+        display: none;
+    }
+
+    /* Stack hero buttons vertically on small phones */
+    .hero-btns {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .cta-btn {
+        width: 100% !important;
+        flex: unset !important;
+        min-width: unset !important;
+        justify-content: center !important;
+    }
+
+    .text-btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .code-card-container {
+        height: 290px;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .about-title {
+        font-size: 1.25rem;
+    }
+
+    .about-pill span {
+        font-size: 0.9rem;
+    }
+
+    .about-pill {
+        padding: 0.6rem 1rem;
+    }
+
+    .arsenal-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .contact-info-container h3 {
+        font-size: 1.5rem;
+    }
+
+    .info-text .value {
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+    }
 }
 
-.typewriter-text {
-    white-space: nowrap;
-    font-size: 0.82em;
+@media (max-width: 360px) {
+    .section {
+        padding: 75px 4% 40px !important;
+    }
+
+    .hero-photo-img {
+        max-width: 150px !important;
+    }
+
+    .hero-glow-circle {
+        width: 160px !important;
+        height: 160px !important;
+    }
+
+    .hero-container .hero-title {
+        font-size: clamp(24px, 10vw, 34px) !important;
+    }
+
+    .logo-name {
+        font-size: 1.02rem !important;
+    }
+
+    .code-card-container {
+        height: 270px;
+    }
+
+    .mobile-menu {
+        width: 100vw;
+    }
 }
