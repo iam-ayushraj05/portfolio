@@ -2759,128 +2759,45 @@ body.light-mode .slider-dots .dot {
 
 
 
-/* === Hero Container & Two-Column Layout === */
+/* === Hero Container — Centered Single-Column Layout === */
 .hero-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 4rem;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-image-col {
-    flex: 1;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.hero-glow-circle {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(6, 182, 212, 0.15) 50%, rgba(99, 102, 241, 0.05) 70%, transparent 90%);
-    border-radius: 50%;
-    z-index: 1;
-    pointer-events: none;
-    filter: blur(20px);
-    animation: pulseGlow 8s ease-in-out infinite alternate;
-}
-
-@keyframes pulseGlow {
-    0% {
-        transform: scale(0.9) translate(0, 0);
-        opacity: 0.85;
-    }
-    100% {
-        transform: scale(1.1) translate(5px, -5px);
-        opacity: 1.15;
-    }
-}
-
-.hero-photo-img {
+    text-align: center;
     width: 100%;
-    max-width: 450px;
-    height: auto;
-    object-fit: cover;
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
     z-index: 2;
-    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 25px rgba(59, 130, 246, 0.35));
-    animation: floatHeroImage 6s ease-in-out infinite;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-@keyframes floatHeroImage {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-12px) rotate(1deg);
-    }
 }
 
 .hero-content {
-    flex: 1.2;
-    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
-/* Align Location & Buttons Left on Desktop */
+/* Center Location & Buttons */
 .hero-content .hero-location {
-    justify-content: flex-start !important;
+    justify-content: center !important;
 }
 
 .hero-content .hero-btns {
-    justify-content: flex-start !important;
+    justify-content: center !important;
 }
 
-/* Adjust title size on desktop and prevent typewriter text from wrapping */
+/* Hero title sizing */
 .hero-container .hero-title {
-    font-size: clamp(32px, 3.8vw, 50px);
+    font-size: clamp(36px, 5vw, 64px);
 }
 
 .typewriter-text {
     white-space: nowrap;
     font-size: 0.82em;
-}
-
-/* Responsiveness for Hero Section & Mobile Views in descending order */
-@media (max-width: 991px) {
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 3rem;
-        padding-top: 2rem;
-    }
-    
-    .hero-content {
-        align-items: center;
-        text-align: center;
-    }
-    
-    .hero-content .hero-location {
-        justify-content: center !important;
-    }
-    
-    .hero-content .hero-btns {
-        justify-content: center !important;
-    }
-    
-    .hero-photo-img {
-        max-width: 320px;
-    }
-    
-    .hero-glow-circle {
-        width: 300px;
-        height: 300px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -2893,17 +2810,15 @@ body.light-mode .slider-dots .dot {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 110px !important; /* proper padding to avoid overlapping with the navbar */
+        padding-top: 110px !important;
         padding-bottom: 60px !important;
     }
 
     .hero-container {
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        gap: 1.5rem !important; /* tighter gap on mobile */
-        padding-top: 0 !important; /* remove padding-top since .hero handles it */
+        padding-top: 0 !important;
         width: 100%;
     }
 
@@ -2912,34 +2827,9 @@ body.light-mode .slider-dots .dot {
         text-align: center;
         width: 100%;
         position: relative;
-        z-index: 10; /* keep text and buttons on top of image column */
+        z-index: 10;
     }
 
-    /* Move profile image slightly upward & scale better */
-    .hero-image-col {
-        order: -1 !important; /* move profile image above text on mobile */
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-        margin-bottom: 0.5rem !important;
-    }
-
-    .hero-photo-img {
-        max-width: 220px !important; /* scaled better for mobile */
-        height: auto;
-        z-index: 2;
-    }
-
-    .hero-glow-circle {
-        width: 240px !important;
-        height: 240px !important;
-        z-index: 1;
-    }
-
-    /* Spacing between text elements */
     .hero-container .hero-title {
         font-size: clamp(32px, 8vw, 48px) !important;
         margin-bottom: 1rem !important;
@@ -2948,15 +2838,14 @@ body.light-mode .slider-dots .dot {
     .hero-subtitle {
         text-align: center;
         font-size: clamp(15px, 4vw, 18px);
-        margin-bottom: 1.2rem !important; /* proper spacing to location pin */
+        margin-bottom: 1.2rem !important;
     }
 
     .hero-location {
         font-size: 0.95rem !important;
-        margin-bottom: 1.5rem !important; /* proper spacing to buttons */
+        margin-bottom: 1.5rem !important;
     }
 
-    /* Hero buttons clickability fixes */
     .hero-btns {
         justify-content: center;
         flex-direction: row;
@@ -2965,7 +2854,7 @@ body.light-mode .slider-dots .dot {
         gap: 0.6rem;
         width: 100%;
         position: relative;
-        z-index: 25 !important; /* highest z-index so buttons are clickable */
+        z-index: 25 !important;
         pointer-events: auto !important;
     }
 
@@ -2992,9 +2881,8 @@ body.light-mode .slider-dots .dot {
         padding: 0 1rem;
     }
 
-    /* Fix any horizontal overflow in sections */
     .projects {
-        overflow-x: hidden !important; /* prevent horizontal scroll on project grid outer container */
+        overflow-x: hidden !important;
     }
 
     .projects-grid {
@@ -3002,11 +2890,10 @@ body.light-mode .slider-dots .dot {
         -webkit-overflow-scrolling: touch !important;
     }
 
-    /* Text resizing for timeline and services on mobile */
     .timeline-content .role {
         font-size: 1.2rem;
     }
-    
+
     .timeline-content .company {
         font-size: 1rem;
     }
@@ -3017,7 +2904,6 @@ body.light-mode .slider-dots .dot {
 }
 
 @media (max-width: 480px) {
-    /* Compact navbar on small phones */
     .navbar {
         padding: 0.8rem 4% !important;
     }
@@ -3043,16 +2929,6 @@ body.light-mode .slider-dots .dot {
         padding: 80px 4% 50px !important;
     }
 
-    /* Scale profile photo for smaller mobile screen */
-    .hero-photo-img {
-        max-width: 180px !important;
-    }
-
-    .hero-glow-circle {
-        width: 200px !important;
-        height: 200px !important;
-    }
-
     .hero-container .hero-title {
         font-size: clamp(28px, 10vw, 42px) !important;
     }
@@ -3061,7 +2937,6 @@ body.light-mode .slider-dots .dot {
         display: none;
     }
 
-    /* Stack hero buttons vertically on small phones */
     .hero-btns {
         flex-direction: column !important;
         align-items: stretch !important;
@@ -3121,15 +2996,6 @@ body.light-mode .slider-dots .dot {
         padding: 75px 4% 40px !important;
     }
 
-    .hero-photo-img {
-        max-width: 150px !important;
-    }
-
-    .hero-glow-circle {
-        width: 160px !important;
-        height: 160px !important;
-    }
-
     .hero-container .hero-title {
         font-size: clamp(24px, 10vw, 34px) !important;
     }
@@ -3146,3 +3012,4 @@ body.light-mode .slider-dots .dot {
         width: 100vw;
     }
 }
+
