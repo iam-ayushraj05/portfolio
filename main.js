@@ -275,7 +275,7 @@ gsap.utils.toArray('.glass-panel').forEach(panel => {
 });
 
 // --- Typewriter Animation ---
-const phrases = ['Full Stack Developer', 'Logical Problem Solver', 'DSA Enthusiast'];
+const phrases = ['Full-Stack & AI Developer', 'Voice-AI & WebRTC Architect', 'Spatial Backend Engineer', 'GCP Arcade Legend'];
 const typeText = document.querySelector('.typewriter-text');
 let phraseIndex = 0;
 let charIndex = 0;
@@ -311,6 +311,35 @@ function typeWriter() {
 
 document.addEventListener('DOMContentLoaded', typeWriter);
 
+// ===== Project Filtering Logic =====
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.project-filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    if (filterBtns.length > 0 && projectCards.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                projectCards.forEach(card => {
+                    const category = card.dataset.category || '';
+                    if (filter === 'all' || category.includes(filter)) {
+                        card.style.display = 'flex';
+                        if (window.gsap) {
+                            gsap.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35 });
+                        }
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+});
+
 // =====================================================
 //   FLOATING CHAT WIDGET
 // =====================================================
@@ -329,13 +358,14 @@ document.addEventListener('DOMContentLoaded', typeWriter);
 
     // --- Bot knowledge base ---
     const botReplies = {
-        skills: "Ayush is skilled in React, Node.js, Java, C++, MongoDB, Docker, and Google Cloud Platform. He also works with Three.js and Generative AI! 🚀",
-        projects: "Ayush has built projects like:\n• Next-Gen AI Workspace\n• ElectionIQ – Interactive Platform\n• VenueFlow AI\n\nCheck the Projects section for full details! 💡",
-        contact: "You can reach Ayush at:\n📧 ayush.raj.dev01@gmail.com\n📞 +91 9279600626\n📍 Bhubaneswar, India\n\nOr use the Contact form on this page!",
+        skills: "Ayush specializes in Python, Java, JavaScript, TypeScript, C/C++, SQL, React.js, Next.js, FastAPI, Node.js, PostgreSQL/PostGIS, MongoDB, WebRTC (LiveKit), STT/TTS (Deepgram Nova-3, Murf Falcon), Google Cloud Platform (GCP), and Docker! 🚀",
+        projects: "Ayush's top GitHub projects include:\n• SENTINEL – Intelligent CCTV Police Intelligence Platform\n• Suraksha AI – AI Emergency Disaster Voice Assistant (WebRTC, Gemini, Deepgram, Murf Falcon)\n• YatraSaathi – Accessible Travel & Spatial Route Planner (FastAPI, PostGIS)\n• Sentris – Narcotics Control Robot & Telemetry\n• StadiumIQ – Crowd Analytics & Smart Venue System\n• Earthquake Magnitude Prediction ML Model\n\nCheck out the Projects section for live demo links! 💡",
+        education: "Ayush is pursuing B.Tech in CSE (IoT) at ITER, Siksha 'O' Anusandhan University with a outstanding 9.44 / 10.0 CGPA! 🎓\nKey Achievements:\n🏆 Murf AI Challenge 2026 Winner\n🔥 Top 400 Globally in Build with AI / Prompt Wars 2026\n☁️ Google Cloud Arcade Legend Facilitator (20+ badges)",
+        contact: "You can reach Ayush directly at:\n📧 ayush.raj.dev01@gmail.com\n📞 +91 9279600626\n📍 Bhubaneswar, Odisha, India\n🔗 github.com/iam-ayushraj05\n🔗 linkedin.com/in/ayush-raj-0b9b19311\n\nOr submit your message via the Contact form!",
         default: [
-            "That's a great question! Feel free to explore the portfolio or use the Contact form to reach out to Ayush directly. 😊",
-            "Interesting! You can learn more about Ayush by scrolling through the sections above, or drop a message in the Contact section.",
-            "I'm a simple bot, but Ayush would love to chat! Hit the Contact section to get in touch. 🙌",
+            "Feel free to explore Ayush's projects, skills, education (9.44 CGPA), or drop a message in the Contact section! 😊",
+            "You can learn more about Ayush by scrolling through the sections, or download his resume from the header.",
+            "I'm Ayush's assistant! Feel free to ask about his projects (SENTINEL, Suraksha AI, YatraSaathi, Sentris) or tech stack. 🙌",
         ],
     };
 
@@ -374,11 +404,13 @@ document.addEventListener('DOMContentLoaded', typeWriter);
 
     function getBotReply(msg) {
         const lower = msg.toLowerCase();
-        if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack') || lower.includes('language'))
+        if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack') || lower.includes('language') || lower.includes('arsenal'))
             return botReplies.skills;
-        if (lower.includes('project') || lower.includes('work') || lower.includes('built') || lower.includes('portfolio'))
+        if (lower.includes('project') || lower.includes('work') || lower.includes('built') || lower.includes('portfolio') || lower.includes('sentinel') || lower.includes('suraksha') || lower.includes('yatra'))
             return botReplies.projects;
-        if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('hire'))
+        if (lower.includes('education') || lower.includes('gpa') || lower.includes('cgpa') || lower.includes('iter') || lower.includes('college') || lower.includes('degree') || lower.includes('achievement') || lower.includes('award'))
+            return botReplies.education;
+        if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('hire') || lower.includes('phone'))
             return botReplies.contact;
         const reply = botReplies.default[defaultIdx % botReplies.default.length];
         defaultIdx++;

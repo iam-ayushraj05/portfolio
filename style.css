@@ -3012,4 +3012,112 @@ body.light-mode .slider-dots .dot {
         width: 100vw;
     }
 }
+
+/* Hero Badge Pill */
+.hero-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.4rem 1.2rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+/* Metric Stats Row */
+.hero-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.stat-card {
+    background: var(--color-panel);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Fira Code', monospace;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--color-light-slate);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .hero-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Project Filter Tabs */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.project-filter-btn {
+    background: var(--color-panel);
+    border: 1px solid var(--glass-border);
+    color: var(--color-text);
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-filter-btn:hover,
+.project-filter-btn.active {
+    background: var(--gradient-primary);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: var(--hover-glow);
+}
+
+/* Timeline Badge */
+.timeline-badge {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--color-primary);
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
 
