@@ -879,8 +879,8 @@ body.light-mode .variable {
 /* Skills/Arsenal Section */
 .arsenal-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     margin-top: 3rem;
 }
 
@@ -967,9 +967,18 @@ body.light-mode .pill {
 /* Achievements */
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
     margin-top: 2rem;
+}
+
+@media (max-width: 992px) {
+    .arsenal-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 }
 
 .achievement-card {
